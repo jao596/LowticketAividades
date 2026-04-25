@@ -19,6 +19,35 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '990341793960771');
 fbq('track', 'PageView');
 </script>
+<script>
+function getCookie(name) {
+  var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  return match ? match[2] : '';
+}
+
+function pixelCTA(el) {
+  fbq('track', 'InitiateCheckout', {
+    content_name: 'Kit Atividades Bíblicas',
+    value: 27.90,
+    currency: 'BRL',
+    num_items: 1
+  });
+  fbq('track', 'Purchase', {
+    content_name: 'Kit Atividades Bíblicas',
+    value: 27.90,
+    currency: 'BRL',
+    num_items: 1
+  });
+  if (el) {
+    var fbc = getCookie('_fbc');
+    var fbp = getCookie('_fbp');
+    var url = new URL(el.href);
+    if (fbc) url.searchParams.set('fbc', fbc);
+    if (fbp) url.searchParams.set('fbp', fbp);
+    el.href = url.toString();
+  }
+}
+</script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=990341793960771&ev=PageView&noscript=1"
 /></noscript>
@@ -1220,7 +1249,7 @@ footer {
       </div>
 
       <!-- CTA 1: Hero principal -->
-      <a href="#comprar" class="btn" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Kit Atividades Bíblicas', value: 27.90, currency: 'BRL'});">🛒 SIM! QUERO MINHA OFERTA →</a>
+      <a href="https://payment.ticto.app/OC2DDAB51?event=PageView&product_id=110362&offer_code=OC2DDAB51&currency=brl&_gl=&fbc=&fbp=&payment_method=credit_card&visitor_id=&fingerprint=" target="_blank" class="btn" onclick="pixelCTA(this)">🛒 SIM! QUERO MINHA OFERTA →</a>
       <p class="secure"><span class="g">🔒</span> Compra 100% segura • Acesso imediato após pagamento</p>
     </div>
   </div>
@@ -1241,7 +1270,7 @@ footer {
     </p>
     <div class="btn-center-wrap">
       <!-- CTA 2: Sobre o produto -->
-      <a href="#comprar" class="btn-inline" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Kit Atividades Bíblicas', value: 27.90, currency: 'BRL'});">🛒 QUERO MEU KIT AGORA - R$27,90 →</a>
+      <a href="https://payment.ticto.app/OC2DDAB51?event=PageView&product_id=110362&offer_code=OC2DDAB51&currency=brl&_gl=&fbc=&fbp=&payment_method=credit_card&visitor_id=&fingerprint=" target="_blank" class="btn-inline" onclick="pixelCTA(this)">🛒 QUERO MEU KIT AGORA - R$27,90 →</a>
     </div>
   </div>
 </section>
@@ -1305,7 +1334,7 @@ footer {
     </p>
 
     <!-- CTA 3: Grid de produtos -->
-    <a href="#comprar" class="btn" style="max-width:420px;margin:0 auto;display:block;" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Kit Atividades Bíblicas', value: 27.90, currency: 'BRL'});">
+    <a href="https://payment.ticto.app/OC2DDAB51?event=PageView&product_id=110362&offer_code=OC2DDAB51&currency=brl&_gl=&fbc=&fbp=&payment_method=credit_card&visitor_id=&fingerprint=" target="_blank" class="btn" style="max-width:420px;margin:0 auto;display:block;" onclick="pixelCTA(this)">
       🛒 QUERO MEU KIT AGORA - R$27,90 →
     </a>
   </div>
@@ -1335,7 +1364,7 @@ footer {
   </div>
 
   <!-- CTA 4: Perfeito para -->
-  <a href="#comprar" class="btn-inline" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Kit Atividades Bíblicas', value: 27.90, currency: 'BRL'});">🛒 QUERO MEU KIT AGORA - R$27,90 →</a>
+  <a href="https://payment.ticto.app/OC2DDAB51?event=PageView&product_id=110362&offer_code=OC2DDAB51&currency=brl&_gl=&fbc=&fbp=&payment_method=credit_card&visitor_id=&fingerprint=" target="_blank" class="btn-inline" onclick="pixelCTA(this)">🛒 QUERO MEU KIT AGORA - R$27,90 →</a>
 </section>
 
 <section class="sec sec-white sec-center">
@@ -1369,7 +1398,7 @@ footer {
   </div>
 
   <!-- CTA 5: Bônus -->
-  <a href="#comprar" class="btn-orange" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Kit Atividades Bíblicas', value: 27.90, currency: 'BRL'});">
+  <a href="https://payment.ticto.app/OC2DDAB51?event=PageView&product_id=110362&offer_code=OC2DDAB51&currency=brl&_gl=&fbc=&fbp=&payment_method=credit_card&visitor_id=&fingerprint=" target="_blank" class="btn-orange" onclick="pixelCTA(this)">
     🛒 QUERO MEU KIT AGORA - R$27,90 →
   </a>
 </section>
@@ -1395,7 +1424,7 @@ footer {
     </div>
 
     <!-- CTA 6: Caixa de oferta principal -->
-    <a href="#" class="btn" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Kit Atividades Bíblicas', value: 27.90, currency: 'BRL'});">🛒 QUERO MEU KIT AGORA →</a>
+    <a href="https://payment.ticto.app/OC2DDAB51?event=PageView&product_id=110362&offer_code=OC2DDAB51&currency=brl&_gl=&fbc=&fbp=&payment_method=credit_card&visitor_id=&fingerprint=" target="_blank" class="btn" onclick="pixelCTA(this)">🛒 QUERO MEU KIT AGORA →</a>
     <p class="secure"><span class="g">🔒</span> Compra 100% segura • Acesso imediato</p>
   </div>
 </section>
@@ -1430,7 +1459,7 @@ footer {
   </div>
 
   <!-- CTA 7: Após depoimentos -->
-  <a href="#comprar" class="btn-inline" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Kit Atividades Bíblicas', value: 27.90, currency: 'BRL'});">🛒 QUERO MEU KIT AGORA - R$27,90 →</a>
+  <a href="https://payment.ticto.app/OC2DDAB51?event=PageView&product_id=110362&offer_code=OC2DDAB51&currency=brl&_gl=&fbc=&fbp=&payment_method=credit_card&visitor_id=&fingerprint=" target="_blank" class="btn-inline" onclick="pixelCTA(this)">🛒 QUERO MEU KIT AGORA - R$27,90 →</a>
 </section>
 
 <section class="sec sec-white sec-center">
@@ -1439,7 +1468,7 @@ footer {
     <h2>Satisfação Garantida ou Seu Dinheiro de Volta</h2>
     <p>Confiamos tanto no nosso trabalho que se você não gostar, nós te devolvemos o seu dinheiro. Você tem 7 dias para experimentar todo o material sem riscos!</p>
     <!-- CTA 8: Garantia -->
-    <a href="#comprar" class="btn-inline" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Kit Atividades Bíblicas', value: 27.90, currency: 'BRL'});">🛒 QUERO MEU KIT AGORA - R$27,90 →</a>
+    <a href="https://payment.ticto.app/OC2DDAB51?event=PageView&product_id=110362&offer_code=OC2DDAB51&currency=brl&_gl=&fbc=&fbp=&payment_method=credit_card&visitor_id=&fingerprint=" target="_blank" class="btn-inline" onclick="pixelCTA(this)">🛒 QUERO MEU KIT AGORA - R$27,90 →</a>
   </div>
 </section>
 
@@ -1467,7 +1496,7 @@ footer {
   </div>
 
   <!-- CTA 9: Como funciona -->
-  <a href="#comprar" class="btn-inline" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Kit Atividades Bíblicas', value: 27.90, currency: 'BRL'});">🛒 QUERO MEU KIT AGORA - R$27,90 →</a>
+  <a href="https://payment.ticto.app/OC2DDAB51?event=PageView&product_id=110362&offer_code=OC2DDAB51&currency=brl&_gl=&fbc=&fbp=&payment_method=credit_card&visitor_id=&fingerprint=" target="_blank" class="btn-inline" onclick="pixelCTA(this)">🛒 QUERO MEU KIT AGORA - R$27,90 →</a>
 </section>
 
 <section class="sec sec-white">
@@ -1509,7 +1538,7 @@ footer {
   </div>
 
   <!-- CTA 10: Final -->
-  <a href="#comprar" class="btn" style="max-width:440px;margin:0 auto;display:block;" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Kit Atividades Bíblicas', value: 27.90, currency: 'BRL'});">
+  <a href="https://payment.ticto.app/OC2DDAB51?event=PageView&product_id=110362&offer_code=OC2DDAB51&currency=brl&_gl=&fbc=&fbp=&payment_method=credit_card&visitor_id=&fingerprint=" target="_blank" class="btn" style="max-width:440px;margin:0 auto;display:block;" onclick="pixelCTA(this)">
     🛒 GARANTIR MEU KIT AGORA - R$27,90 →
   </a>
 </section>
