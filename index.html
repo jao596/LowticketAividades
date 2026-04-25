@@ -18,49 +18,38 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '990341793960771');
 fbq('track', 'PageView');
-</script>
-<script>
+
+// Helpers
 function getCookie(name) {
   var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
   return match ? match[2] : '';
 }
 
-function buildURL(base) {
-  var url = new URL(base);
-  var fbc = getCookie('_fbc');
-  var fbp = getCookie('_fbp');
-  if (fbc) url.searchParams.set('fbc', fbc);
-  if (fbp) url.searchParams.set('fbp', fbp);
-  return url.toString();
-}
-
-var BASE_URL = 'https://payment.ticto.app/OC2DDAB51?event=PageView&product_id=110362&offer_code=OC2DDAB51&currency=brl&_gl=&fbc=&fbp=&payment_method=credit_card&visitor_id=&fingerprint=';
+var BASE_URL = 'https://payment.ticto.app/OC2DDAB51?event=PageView&product_id=110362&offer_code=OC2DDAB51&currency=brl&payment_method=credit_card&visitor_id=&fingerprint=';
 
 function pixelCTA(e) {
   e.preventDefault();
 
-  var destino = buildURL(BASE_URL);
+  // Monta URL com fbc e fbp dos cookies
+  var url = new URL(BASE_URL);
+  var fbc = getCookie('_fbc');
+  var fbp = getCookie('_fbp');
+  if (fbc) url.searchParams.set('fbc', fbc);
+  if (fbp) url.searchParams.set('fbp', fbp);
+  var destino = url.toString();
 
-  // 1. Dispara InitiateCheckout e abre a URL assim que o pixel confirmar
+  // Dispara InitiateCheckout
   fbq('track', 'InitiateCheckout', {
     content_name: 'Kit Atividades Bíblicas',
     value: 27.90,
     currency: 'BRL',
     num_items: 1
-  }, { eventID: 'ic_' + Date.now() });
+  });
 
-  // 2. Dispara Purchase com callback — só redireciona após o envio ser confirmado
-  fbq('track', 'Purchase', {
-    content_name: 'Kit Atividades Bíblicas',
-    value: 27.90,
-    currency: 'BRL',
-    num_items: 1
-  }, { eventID: 'pu_' + Date.now() });
-
-  // 3. Aguarda 300ms para garantir envio do pixel antes de navegar
+  // Aguarda 500ms para garantir envio do pixel e abre checkout em nova aba
   setTimeout(function() {
     window.open(destino, '_blank');
-  }, 300);
+  }, 500);
 }
 </script>
 <noscript><img height="1" width="1" style="display:none"
