@@ -8,16 +8,22 @@
 
 <!-- Meta Pixel Code -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '990341793960771');
-fbq('track', 'PageView');
+// Evita dupla inicialização caso a Kiwify também carregue o pixel
+if (!window._pixelInitialized) {
+  window._pixelInitialized = true;
+
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+
+  fbq('init', '990341793960771');
+  fbq('track', 'PageView');
+}
 
 // Helpers
 function getCookie(name) {
@@ -26,11 +32,11 @@ function getCookie(name) {
 }
 
 var BASE_URL = 'https://pay.kiwify.com.br/gLTLld8';
+var _checkoutFired = false;
 
 function pixelCTA(e) {
   e.preventDefault();
 
-  // Monta URL com fbc e fbp dos cookies
   var url = new URL(BASE_URL);
   var fbc = getCookie('_fbc');
   var fbp = getCookie('_fbp');
@@ -38,18 +44,20 @@ function pixelCTA(e) {
   if (fbp) url.searchParams.set('fbp', fbp);
   var destino = url.toString();
 
-  // Dispara InitiateCheckout
-  fbq('track', 'InitiateCheckout', {
-    content_name: 'Kit Atividades Bíblicas',
-    value: 27.90,
-    currency: 'BRL',
-    num_items: 1
-  });
+  // Dispara InitiateCheckout apenas UMA vez por sessão
+  if (!_checkoutFired) {
+    _checkoutFired = true;
+    fbq('track', 'InitiateCheckout', {
+      content_name: 'Kit Atividades Bíblicas',
+      value: 19.90,
+      currency: 'BRL',
+      num_items: 1
+    });
+  }
 
-  // Aguarda 500ms para garantir envio do pixel e abre checkout em nova aba
   setTimeout(function() {
     window.open(destino, '_blank');
-  }, 500);
+  }, 300);
 }
 </script>
 <noscript><img height="1" width="1" style="display:none"
@@ -1252,7 +1260,6 @@ footer {
         <div class="guar-txt">🛡 E COM GARANTIA DE 7 DIAS!</div>
       </div>
 
-      <!-- CTA 1: Hero principal -->
       <a href="#" class="btn" onclick="pixelCTA(event)">🛒 SIM! QUERO MINHA OFERTA →</a>
       <p class="secure"><span class="g">🔒</span> Compra 100% segura • Acesso imediato após pagamento</p>
     </div>
@@ -1273,7 +1280,6 @@ footer {
       de forma lúdica e eficaz.
     </p>
     <div class="btn-center-wrap">
-      <!-- CTA 2: Sobre o produto -->
       <a href="#" class="btn-inline" onclick="pixelCTA(event)">🛒 QUERO MEU KIT AGORA - R$19,90 →</a>
     </div>
   </div>
@@ -1337,7 +1343,6 @@ footer {
       Valor total separado: R$97,00 → <big>TUDO ISSO por apenas R$19,90</big>
     </p>
 
-    <!-- CTA 3: Grid de produtos -->
     <a href="#" class="btn" style="max-width:420px;margin:0 auto;display:block;" onclick="pixelCTA(event)">
       🛒 QUERO MEU KIT AGORA - R$19,90 →
     </a>
@@ -1367,7 +1372,6 @@ footer {
     </div>
   </div>
 
-  <!-- CTA 4: Perfeito para -->
   <a href="#" class="btn-inline" onclick="pixelCTA(event)">🛒 QUERO MEU KIT AGORA - R$19,90 →</a>
 </section>
 
@@ -1401,7 +1405,6 @@ footer {
     </div>
   </div>
 
-  <!-- CTA 5: Bônus -->
   <a href="#" class="btn-orange" onclick="pixelCTA(event)">
     🛒 QUERO MEU KIT AGORA - R$19,90 →
   </a>
@@ -1423,11 +1426,10 @@ footer {
 
     <div class="offer-prices">
       <span class="was">R$97,00</span>
-      <span class="now">R$27,90</span>
+      <span class="now">R$19,90</span>
       <span class="sub2">Pagamento único • Acesso vitalício</span>
     </div>
 
-    <!-- CTA 6: Caixa de oferta principal -->
     <a href="#" class="btn" onclick="pixelCTA(event)">🛒 QUERO MEU KIT AGORA →</a>
     <p class="secure"><span class="g">🔒</span> Compra 100% segura • Acesso imediato</p>
   </div>
@@ -1462,7 +1464,6 @@ footer {
     </div>
   </div>
 
-  <!-- CTA 7: Após depoimentos -->
   <a href="#" class="btn-inline" onclick="pixelCTA(event)">🛒 QUERO MEU KIT AGORA - R$19,90 →</a>
 </section>
 
@@ -1471,7 +1472,6 @@ footer {
     <div class="gicon">🛡️</div>
     <h2>Satisfação Garantida ou Seu Dinheiro de Volta</h2>
     <p>Confiamos tanto no nosso trabalho que se você não gostar, nós te devolvemos o seu dinheiro. Você tem 7 dias para experimentar todo o material sem riscos!</p>
-    <!-- CTA 8: Garantia -->
     <a href="#" class="btn-inline" onclick="pixelCTA(event)">🛒 QUERO MEU KIT AGORA - R$19,90 →</a>
   </div>
 </section>
@@ -1499,7 +1499,6 @@ footer {
     </div>
   </div>
 
-  <!-- CTA 9: Como funciona -->
   <a href="#" class="btn-inline" onclick="pixelCTA(event)">🛒 QUERO MEU KIT AGORA - R$19,90 →</a>
 </section>
 
@@ -1524,7 +1523,7 @@ footer {
 
     <details class="faq">
       <summary>O pagamento é único?</summary>
-      <p>Sim! É um pagamento único de R$27,90, sem mensalidades ou taxas. O acesso é vitalício.</p>
+      <p>Sim! É um pagamento único de R$19,90, sem mensalidades ou taxas. O acesso é vitalício.</p>
     </details>
   </div>
 </section>
@@ -1541,7 +1540,6 @@ footer {
     <span><span class="g">✓</span> Pagamento seguro</span>
   </div>
 
-  <!-- CTA 10: Final -->
   <a href="#" class="btn" style="max-width:440px;margin:0 auto;display:block;" onclick="pixelCTA(event)">
     🛒 GARANTIR MEU KIT AGORA - R$19,90 →
   </a>
